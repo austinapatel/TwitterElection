@@ -24,6 +24,7 @@ public class Display extends JFrame {
 		mapPanel.setSize(F_WIDTH / 2, F_HEIGHT);
 		mapPanel.setLayout(new BorderLayout());
 		this.setLayout(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		TwitterPanel twitterPanel = new TwitterPanel(tweets);
 //		twitterPanel.setSize(100, 100);
