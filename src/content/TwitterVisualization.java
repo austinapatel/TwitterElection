@@ -34,7 +34,7 @@ public class TwitterVisualization {
 		
 //		System.out.println(TwitterVisualization.getStateTweets().get("California").getText());
 //		System.out.println("Test");
-		System.out.println(getStateColors(""));
+		System.out.println(getStateColors("trump"));
 	}
 	
 	/**Returns the Tweets to be for each state.*/
@@ -57,7 +57,7 @@ public class TwitterVisualization {
 		for (String state : states)
 			results.put(state, 0);
 			
-		ArrayList<Status> tweetStatuses = TwitterAPI.searchTwitter(query, 1000);
+		ArrayList<Status> tweetStatuses = TwitterAPI.searchTwitter(query, 5000);
 		ArrayList<String> tweets = new ArrayList<String>();
 		
 		for (Status tweet : tweetStatuses)
