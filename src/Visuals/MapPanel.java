@@ -14,12 +14,11 @@ import javax.swing.JPanel;
 import content.TwitterVisualization;
 
 public class MapPanel extends JPanel {
-	protected void paintComponent(Graphics g)
-	{
-		//Make the states and state images
-		this.setBackground(Color.WHITE);
-		HashMap<String, BufferedImage> states = new HashMap();
-		
+	
+	private HashMap<String, BufferedImage> states;
+	
+	public MapPanel() {
+		states = new HashMap<String, BufferedImage>();
 		
 		try {
 			for (String state : TwitterVisualization.states) {
@@ -29,12 +28,18 @@ public class MapPanel extends JPanel {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	}
+	
+	protected void paintComponent(Graphics g)
+	{
+		//Make the states and state images
+		this.setBackground(Color.WHITE);		
+		
 		//Paint it all
 	    super.paintComponent(g);
 	    
 	    for (String state : TwitterVisualization.states)
 	    	g.drawImage(states.get(state).getScaledInstance(Display.F_WIDTH / 2, -1, states.get(state).SCALE_SMOOTH), 0, 0, this);
-
 	}
 	
 	//Change Color
