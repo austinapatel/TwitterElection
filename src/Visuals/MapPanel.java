@@ -2,34 +2,38 @@ package Visuals;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import content.TwitterVisualization;
+
 public class MapPanel extends JPanel {
 	protected void paintComponent(Graphics g)
 	{
+		//Make the states and state images
 		this.setBackground(Color.WHITE);
-		BufferedImage mapImage = null;
-		File imagefile = new File("Images/Nevada.png");
-		BufferedImage mapImage2 = null;
-		File imagefile2 = new File("Images/California.png");
-        try {
-			mapImage = ImageIO.read(imagefile);
-			mapImage2 = ImageIO.read(imagefile2);
-		} catch (IOException e) {
+		HashMap<String, BufferedImage> states = new HashMap();
+		
+		
+		try {
+			for (String state : TwitterVisualization.states) {
+				states.put(state, ImageIO.read(new File("Images/" + state + ".png")));
+			}
+		} catch (IOException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
-	    //paint background image
-        mapImage = tint(mapImage);
+		//Paint it all
 	    super.paintComponent(g);
-	    g.drawImage(mapImage, 0, 0, this);
-	    g.drawImage(mapImage.getScaledInstance(800, -1, mapImage. SCALE_SMOOTH), 0, 0, this);
+	    
+	    for (String state : TwitterVisualization.states)
+	    	g.drawImage(states.get(state).getScaledInstance(Display.F_WIDTH / 2, -1, states.get(state).SCALE_SMOOTH), 0, 0, this);
 
 	}
 	
