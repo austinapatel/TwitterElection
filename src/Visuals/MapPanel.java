@@ -41,7 +41,7 @@ public class MapPanel extends JPanel {
 	    super.paintComponent(g);
 	    
 	    for(String diffStates : TwitterVisualization.states) {
-	    	if(data.get(diffStates) > 0) 
+	    	if(data.get(diffStates) < 0) 
 	    		states.replace(diffStates, tint(states.get(diffStates)));
 	    }
 	    
