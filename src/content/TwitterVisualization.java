@@ -117,7 +117,7 @@ public class TwitterVisualization {
 
 		for (String state : states)
 		{
-			ArrayList<Status> tweets = TwitterAPI.searchTwitter(state + " " + query, 10);
+			ArrayList<Status> tweets = TwitterAPI.searchTwitter(state + " " + query, 1);
 			
 			for (Status tweet : tweets)
 				if (tweet.getText().contains(state) || tweet.getUser().getLocation().contains(state)) {
