@@ -54,6 +54,6 @@ public class TwitterPanel extends JPanel implements ActionListener {
 		num+= 10;
 		if (num > status.size())
 			timer.stop();
-		this.repaint();
+		this.paintComponent(getGraphics());
 	}
 }
