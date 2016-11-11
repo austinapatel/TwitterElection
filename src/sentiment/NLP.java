@@ -16,6 +16,12 @@ public class NLP {
 		pipeline = new StanfordCoreNLP("MyPropFile.properties");
 	}
 
+	
+//	NLP.init();
+//    for(String tweet : tweets) {
+//        System.out.println(tweet + " : " + NLP.findSentiment(tweet));
+	
+	
 	public static int findSentiment(String tweet) {
 
 		int mainSentiment = 0;
