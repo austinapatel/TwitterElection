@@ -11,14 +11,14 @@ import twitter4j.Status;
 
 @SuppressWarnings("serial")
 public class Display extends JFrame {
-	public final static int F_HEIGHT = 1000;
-	public final static int F_WIDTH = 1600;
+	public final static int F_HEIGHT = 600;
+	public final static int F_WIDTH = 1000;
 	
 	//Constructor
 	public Display (HashMap<String, Integer> data, ArrayList<Status> tweets) {
 		//Frame Size
 		this.setSize(F_WIDTH, F_HEIGHT);
-//		this.setResizable(false);
+		this.setResizable(false);
 		//JPanel stuff
 		MapPanel mapPanel = new MapPanel();
 		mapPanel.setSize(F_WIDTH / 2, F_HEIGHT);
@@ -38,9 +38,6 @@ public class Display extends JFrame {
 		this.add(mapPanel);
 		this.add(twitterPanel);
 
-		
-		//Add the panel
-		//this.add(mapPanel);
 		//Make it visible
 		this.setVisible(true);
 	}
