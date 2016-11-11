@@ -1,5 +1,5 @@
 
-package twitter_api;
+package apis;
 
 import java.util.ArrayList;
 
@@ -13,6 +13,8 @@ import twitter4j.TwitterFactory;
 /**Connects to the Twitter API through the Twitter4J library.
  * Provides static methods to perform various functions on Twitter.*/
 public class TwitterAPI {
+	
+	private static Twitter twitter;
 
 	/**Tests the TwitterAPI class.*/
 	public static void main(String[] args) {
@@ -21,11 +23,13 @@ public class TwitterAPI {
 		for (Status searchResult : searchResults)
 			System.out.println('@' + searchResult.getUser().getScreenName() + ": " + searchResult.getText());
 	}
+	
+	public static void init() {
+		twitter = TwitterFactory.getSingleton();
+	}
 
 	/**Searches Twitter given a query and number of results.*/
-	public static ArrayList<Status> searchTwitter(String search, int size) {
-		Twitter twitter = TwitterFactory.getSingleton();
-		
+	public static ArrayList<Status> searchTwitter(String search, int size) {		
 		Query query = new Query(search);
 		query.setCount(size);
 		
@@ -41,5 +45,19 @@ public class TwitterAPI {
 		}
 		
 		return results;
+	}
+	
+	/**Filters through a list of Tweets and returns the most popular.*/
+	public static Status mostPopular(ArrayList<Status> tweets) {
+		Status mostPopular = null;
+		int mostFavorited = 0;
+		for (Status tweet : tweets)
+			if (tweet.getFavoriteCount() > mostFavorited)
+			{
+				mostFavorited = tweet.getFavoriteCount();
+				mostPopular = tweet;
+			}
+		
+		return mostPopular;
 	}
 }
