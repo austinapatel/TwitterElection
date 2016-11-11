@@ -14,14 +14,17 @@ import javax.swing.Timer;
 import twitter4j.Status;
 
 
-public class TwitterPanel extends JPanel  {
+public class TwitterPanel extends JPanel implements ActionListener {
 	private ArrayList<Status> status;
-	
+	Timer timer;
+	private int num = 10;
 	public TwitterPanel(ArrayList<Status> status) {
 		this.setVisible(true);
 		this.setSize(Display.F_WIDTH / 2, Display.F_HEIGHT);
-		this.setBackground(Color.BLUE);
+		this.setBackground(Color.CYAN);
 		this.status = status;
+		timer = new Timer(3000, this);
+		timer.start();
 	}
 
 	public static void main(String[] args) {
@@ -37,16 +40,20 @@ public class TwitterPanel extends JPanel  {
 		super.paintComponent(g);
 		g.setColor(Color.RED);
 		g.setColor(Color.BLACK);
-		g.setFont(new Font("Arial", Font.BOLD, 10));
-		int y = 155;
-		for (Status tweet: status)
+		g.setFont(new Font("Arial", Font.BOLD, 16));
+		int y = 10;
+		
+		for (int i = num - 10; i < num; i ++)
 		{
-			g.drawString(tweet.getText(), 0, y);
+			g.drawString(status.get(0).getText(), 0, y);
 			y+=30;
-			if (y > getHeight())
-			{
-				break;
-			}
 		}
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		num+= 10;
+		if (num > status.size())
+			timer.stop();
+		this.repaint();
 	}
 }
