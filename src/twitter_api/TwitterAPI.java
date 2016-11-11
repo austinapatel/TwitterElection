@@ -3,6 +3,7 @@ package twitter_api;
 
 import java.util.ArrayList;
 
+import Visuals.Display;
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
@@ -16,7 +17,9 @@ public class TwitterAPI {
 
 	/**Tests the TwitterAPI class.*/
 	public static void main(String[] args) {
-		ArrayList<Status> searchResults = searchTwitter("california election", 10);
+		ArrayList<Status> searchResults = searchTwitter("assassinate trump", 10);
+		
+		Display map = new Display();
 		
 		for (Status searchResult : searchResults)
 			System.out.println('@' + searchResult.getUser().getScreenName() + ": " + searchResult.getText());
