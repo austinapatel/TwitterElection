@@ -13,9 +13,9 @@ import twitter4j.Status;
  */
 public class TwitterVisualization {
 
-	private static String[] states = new String[] { "Alabama", "Alaska", "Arizona", "Arkansas", "California",
-			"Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana",
-			"Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Mineesota",
+	public static String[] states = new String[] { "Alabama", "Arizona", "Arkansas", "California",
+			"Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Idaho", "Illionois", "Indiana",
+			"Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota",
 			"Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico",
 			"New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island",
 			"South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",
