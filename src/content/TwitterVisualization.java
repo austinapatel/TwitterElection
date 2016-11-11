@@ -34,7 +34,8 @@ public class TwitterVisualization {
 		
 //		System.out.println(TwitterVisualization.getStateTweets().get("California").getText());
 //		System.out.println("Test");
-		System.out.println(getStateColors("trump"));
+		System.out.println(getStateColors("Hillary"));
+		System.out.println(getStateColors("Hillary"));
 	}
 	
 	/**Returns the Tweets to be for each state.*/
@@ -66,21 +67,23 @@ public class TwitterVisualization {
 //		tweets.add("i love and pizza and rainbows yes my life is great California");
 //		tweets.add("i want to kill death destruction trump Arkansas");
 		
+		ArrayList<Integer> rates = new ArrayList();
 		for (Status tweet : tweets)
 			for (String state : states)
 				if (tweet.getText().contains(state) || tweet.getUser().getLocation().contains(state))
 				{
 					int result = NLP.findSentiment(tweet.getText());
+					rates.add(result);
 					int change = -1;
 					
 					if (result == 3)
 						change = 2;
 					
-					System.out.println(tweet);
+					
 					
 					results.put(state, results.get(state) + change);
 				}
-			
+		System.out.println(rates.toString());
 		return results;
 	}
 }
