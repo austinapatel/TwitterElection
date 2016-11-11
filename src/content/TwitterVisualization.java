@@ -20,13 +20,19 @@ public class TwitterVisualization {
 			"New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island",
 			"South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",
 			"West Virginia", "Wisconsin", "Wyoming" };
+	
+	private static ArrayList<Status> lastTweets;
 
 	public static void main(String[] args) {
 		TwitterAPI.init();
 
 		// System.out.println(TwitterVisualization.getStateTweets().get("California").getText());
 		// System.out.println("Test");
-		System.out.println(getStateColorsNew("trump"));
+		System.out.println(getStateColors("trump"));
+	}
+	
+	public static ArrayList<Status> getLastTweets() {
+		return lastTweets;
 	}
 
 	/** Returns the Tweets to be for each state. */
@@ -43,57 +49,58 @@ public class TwitterVisualization {
 	 * Returns the color of the state to display. 0 is no color, 100 is full
 	 * color.
 	 */
+//	public static HashMap<String, Integer> getStateColors(String query) {
+//		NLP.init();
+//
+//		HashMap<String, Integer> netResults = new HashMap<String, Integer>(),
+//				positiveResults = new HashMap<String, Integer>(), negativeResults = new HashMap<String, Integer>(),
+//				neutralResults = new HashMap<String, Integer>();
+//
+//		for (String state : states) {
+//			netResults.put(state, 0);
+//			positiveResults.put(state, 0);
+//			negativeResults.put(state, 0);
+//			neutralResults.put(state, 0);
+//		}
+//
+//		ArrayList<Status> tweets = TwitterAPI.searchTwitter(query, 100);
+//
+//		int total = 0;
+//
+//		for (Status tweet : tweets)
+//			for (String state : states)
+//				if (tweet.getText().contains(state) || tweet.getUser().getLocation().contains(state)) {
+//					int result = NLP.findSentiment(tweet.getText());
+//					int change = 0;
+//
+//					if (result == 3) {
+//						change = 1;
+//						positiveResults.put(state, positiveResults.get(state) + 1);
+//					} else if (result == 2) {
+//						change = 0;
+//						neutralResults.put(state, neutralResults.get(state) + 1);
+//					} else if (result == 1) {
+//						change = -1;
+//						negativeResults.put(state, negativeResults.get(state) + 1);
+//					}
+//
+//					total++;
+//
+//					netResults.put(state, netResults.get(state) + change);
+//				}
+//
+//		System.out.println("Negative: " + negativeResults);
+//		System.out.println("Positive: " + positiveResults);
+//		System.out.println("Neutral: " + neutralResults);
+//		System.out.println("Net: " + netResults);
+//		// System.out.println(total);
+//
+//		return netResults;
+//	}
+
 	public static HashMap<String, Integer> getStateColors(String query) {
 		NLP.init();
-
-		HashMap<String, Integer> netResults = new HashMap<String, Integer>(),
-				positiveResults = new HashMap<String, Integer>(), negativeResults = new HashMap<String, Integer>(),
-				neutralResults = new HashMap<String, Integer>();
-
-		for (String state : states) {
-			netResults.put(state, 0);
-			positiveResults.put(state, 0);
-			negativeResults.put(state, 0);
-			neutralResults.put(state, 0);
-		}
-
-		ArrayList<Status> tweets = TwitterAPI.searchTwitter(query, 100);
-
-		int total = 0;
-
-		for (Status tweet : tweets)
-			for (String state : states)
-				if (tweet.getText().contains(state) || tweet.getUser().getLocation().contains(state)) {
-					int result = NLP.findSentiment(tweet.getText());
-					int change = 0;
-
-					if (result == 3) {
-						change = 1;
-						positiveResults.put(state, positiveResults.get(state) + 1);
-					} else if (result == 2) {
-						change = 0;
-						neutralResults.put(state, neutralResults.get(state) + 1);
-					} else if (result == 1) {
-						change = -1;
-						negativeResults.put(state, negativeResults.get(state) + 1);
-					}
-
-					total++;
-
-					netResults.put(state, netResults.get(state) + change);
-				}
-
-		System.out.println("Negative: " + negativeResults);
-		System.out.println("Positive: " + positiveResults);
-		System.out.println("Neutral: " + neutralResults);
-		System.out.println("Net: " + netResults);
-		// System.out.println(total);
-
-		return netResults;
-	}
-
-	public static HashMap<String, Integer> getStateColorsNew(String query) {
-		NLP.init();
+		lastTweets = new ArrayList<Status>();
 
 		HashMap<String, Integer> netResults = new HashMap<String, Integer>(),
 				positiveResults = new HashMap<String, Integer>(), negativeResults = new HashMap<String, Integer>(),
@@ -110,7 +117,7 @@ public class TwitterVisualization {
 
 		for (String state : states)
 		{
-			ArrayList<Status> tweets = TwitterAPI.searchTwitter(state + " " + query, 50);
+			ArrayList<Status> tweets = TwitterAPI.searchTwitter(state + " " + query, 1);
 			
 			for (Status tweet : tweets)
 				if (tweet.getText().contains(state) || tweet.getUser().getLocation().contains(state)) {
@@ -127,6 +134,8 @@ public class TwitterVisualization {
 						change = -1;
 						negativeResults.put(state, negativeResults.get(state) + 1);
 					}
+					
+					lastTweets.add(tweet);
 	
 					total++;
 	
