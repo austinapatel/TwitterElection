@@ -19,15 +19,7 @@ public class TwitterPanel extends JPanel
 	
 	
 	
-	public void paintComponent(Graphics g)
-	{
-		// Call the "paint" method in the parent class
-		super.paint(g);
-		// Call a method (below) to do the drawing
-		DrawStuff(g);
-	}
-	
-	public void DrawStuff(Graphics g)
+	protected void paintComponent(Graphics g)
 	{
 		// Draw a blue line
 		g.setColor(Color.BLUE);
@@ -45,5 +37,11 @@ public class TwitterPanel extends JPanel
 		// Draw a filled-in magenta circle
 		g.setColor(Color.MAGENTA);
 		g.fillOval(200, 180, 100, 100);
+		
+		
+		// Call the "paint" method in the parent class
+		  super.paintComponent(g);
+		// Call a method (below) to do the drawing
+		
 	}
 }
