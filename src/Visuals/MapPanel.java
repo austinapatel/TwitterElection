@@ -15,9 +15,12 @@ public class MapPanel extends JPanel {
 	{
 		this.setBackground(Color.WHITE);
 		BufferedImage mapImage = null;
-		File imagefile = new File("Images/white-states.png");
+		File imagefile = new File("Images/Nevada.png");
+		BufferedImage mapImage2 = null;
+		File imagefile2 = new File("Images/California.png");
         try {
 			mapImage = ImageIO.read(imagefile);
+			mapImage2 = ImageIO.read(imagefile2);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -25,7 +28,7 @@ public class MapPanel extends JPanel {
 	    //paint background image
         mapImage = tint(mapImage);
 	    super.paintComponent(g);
-	//    g.drawImage(mapImage, 0, 0, this);
+	    g.drawImage(mapImage, 0, 0, this);
 	    g.drawImage(mapImage.getScaledInstance(800, -1, mapImage. SCALE_SMOOTH), 0, 0, this);
 
 	}
