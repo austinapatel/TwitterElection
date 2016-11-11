@@ -13,8 +13,8 @@ import twitter4j.Status;
 
 @SuppressWarnings("serial")
 public class Display extends JFrame implements WindowListener {
-	public final static int F_HEIGHT = 600;
-	public final static int F_WIDTH = 1000;
+	public final static int F_HEIGHT = 700;
+	public final static int F_WIDTH = 1300;
 	
 	private TwitterPanel twitterPanel;
 	
@@ -25,7 +25,7 @@ public class Display extends JFrame implements WindowListener {
 		this.setResizable(false);
 		//JPanel stuff
 		MapPanel mapPanel = new MapPanel(data);
-		mapPanel.setSize(F_WIDTH / 2, F_HEIGHT);
+		mapPanel.setSize((int) (F_WIDTH * .75), F_HEIGHT);
 		mapPanel.setLayout(new BorderLayout());
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,7 +39,7 @@ public class Display extends JFrame implements WindowListener {
 		bottomLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		mapPanel.add(bottomLabel, BorderLayout.PAGE_END);
 //		TwitterPanel.add(bottomLabel, BorderLayout.PAGE_END);
-		twitterPanel.setLocation(F_WIDTH / 2, 0);
+		twitterPanel.setLocation((int) (F_WIDTH * .75), 0);
 		this.add(mapPanel);
 		this.add(twitterPanel);
 

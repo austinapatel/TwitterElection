@@ -42,22 +42,28 @@ public class MapPanel extends JPanel {
 	    
 	    for(String diffStates : TwitterVisualization.states) {
 	    	if(data.get(diffStates) < 0) 
-	    		states.replace(diffStates, tint(states.get(diffStates)));
+	    		states.replace(diffStates, tint(states.get(diffStates), true));
+	    	else 
+	    		states.replace(diffStates, tint(states.get(diffStates), false));
 	    }
 	    
 	    for (String state : TwitterVisualization.states)
-	    	g.drawImage(states.get(state).getScaledInstance(Display.F_WIDTH / 2, -1, states.get(state).SCALE_SMOOTH), 0, 0, this);
+	    	g.drawImage(states.get(state).getScaledInstance((int) (Display.F_WIDTH * .75), -1, states.get(state).SCALE_SMOOTH), 0, 0, this);
 	}
 	
 	//Change Color
-	public static BufferedImage tint(BufferedImage img) {
+	public static BufferedImage tint(BufferedImage img, Boolean rOrG) {
 
 	    for (int x = 0; x < img.getWidth(); x++) {
 	        for (int y = 0; y < img.getHeight(); y++) {
 	        	if(!isTransparent(x, y, img)) {
 	        		Color color = new Color(img.getRGB(x, y));
-	            	Color brighter = Color.RED.brighter();
-	            	img.setRGB(x, y, brighter.getRGB());
+	            	Color rBrighter = Color.RED.brighter();
+	            	Color gBrighter = Color.GREEN.brighter();
+	            	if(rOrG)
+	            		img.setRGB(x, y, rBrighter.getRGB());
+	            	else 
+	            		img.setRGB(x, y, gBrighter.getRGB());
 	        	}
 	        }
 	    }

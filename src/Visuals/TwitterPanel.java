@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -21,7 +20,7 @@ public class TwitterPanel extends JPanel implements ActionListener {
 	
 	public TwitterPanel(ArrayList<Status> status) {
 		this.setVisible(true);
-		this.setSize(Display.F_WIDTH / 2, Display.F_HEIGHT);
+		this.setSize((int) (Display.F_WIDTH * .75), Display.F_HEIGHT);
 		this.setBackground(Color.CYAN);
 		this.status = status;
 		timer = new Timer(3000, this);
@@ -45,14 +44,16 @@ public class TwitterPanel extends JPanel implements ActionListener {
 		super.paintComponent(g);
 		g.setColor(Color.RED);
 		g.setColor(Color.BLACK);
-		g.setFont(new Font("Arial", Font.BOLD, 16));
+		g.setFont(new Font("Arial", Font.BOLD, 12));
 		int y = 20;
 		
 		if (status != null)
 			for (int i = num - 10; i < num; i ++)
 			{
-				g.drawString(status.get(i).getText(), 0, y);
-				y+=30;
+				if (i < status.size()) {
+					g.drawString(status.get(i).getText(), 0, y);
+					y+=30;
+				}
 			}
 	}
 	
