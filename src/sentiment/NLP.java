@@ -19,8 +19,9 @@ public class NLP {
 	
 	public static void main(String[] args)
 	{
-		NLP.init();    
-	    System.out.println("Donald trump is very bad" + " : " + NLP.findSentiment("this is very bad weather"));
+		NLP.init();
+		String search = "cats are bad";
+	    System.out.println(search + " : " + NLP.findSentiment(search));
 	}
 	
 	public static int findSentiment(String tweet) {
