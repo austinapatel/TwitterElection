@@ -16,8 +16,9 @@ import twitter4j.Status;
 
 public class TwitterPanel extends JPanel implements ActionListener {
 	private ArrayList<Status> status;
-	Timer timer;
+	private Timer timer;
 	private int num = 10;
+	
 	public TwitterPanel(ArrayList<Status> status) {
 		this.setVisible(true);
 		this.setSize(Display.F_WIDTH / 2, Display.F_HEIGHT);
@@ -27,12 +28,16 @@ public class TwitterPanel extends JPanel implements ActionListener {
 		timer.start();
 	}
 
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setLayout(null);
-		frame.setSize(1000, 1000);
-		frame.add(new TwitterPanel(null));
-		frame.setVisible(true);
+//	public static void main(String[] args) {
+//		JFrame frame = new JFrame();
+//		frame.setLayout(null);
+//		frame.setSize(1000, 1000);
+//		frame.add(new TwitterPanel(null));
+//		frame.setVisible(true);
+//	}
+	
+	public void stopTimer() {
+		timer.stop();
 	}
 
 	protected void paintComponent(Graphics g) {
@@ -43,17 +48,21 @@ public class TwitterPanel extends JPanel implements ActionListener {
 		g.setFont(new Font("Arial", Font.BOLD, 16));
 		int y = 10;
 		
-		for (int i = num - 10; i < num; i ++)
-		{
-			g.drawString(status.get(0).getText(), 0, y);
-			y+=30;
-		}
+		if (status == null)
+			for (int i = num - 10; i < num; i ++)
+			{
+				g.drawString(status.get(i).getText(), 0, y);
+				y+=30;
+			}
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		num+= 10;
+		num += 10;
 		if (num > status.size())
-			timer.stop();
+		{
+			num = 10;
+		}
 		this.paintComponent(getGraphics());
 	}
 }
