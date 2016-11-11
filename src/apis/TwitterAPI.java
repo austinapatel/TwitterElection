@@ -1,9 +1,8 @@
 
-package twitter_api;
+package apis;
 
 import java.util.ArrayList;
 
-import Visuals.Display;
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
@@ -14,21 +13,23 @@ import twitter4j.TwitterFactory;
 /**Connects to the Twitter API through the Twitter4J library.
  * Provides static methods to perform various functions on Twitter.*/
 public class TwitterAPI {
+	
+	private static Twitter twitter;
 
 	/**Tests the TwitterAPI class.*/
 	public static void main(String[] args) {
-		ArrayList<Status> searchResults = searchTwitter("assassinate trump", 10);
-		
-		Display map = new Display();
+		ArrayList<Status> searchResults = searchTwitter("california election", 10);
 		
 		for (Status searchResult : searchResults)
 			System.out.println('@' + searchResult.getUser().getScreenName() + ": " + searchResult.getText());
 	}
+	
+	public static void init() {
+		twitter = TwitterFactory.getSingleton();
+	}
 
 	/**Searches Twitter given a query and number of results.*/
-	public static ArrayList<Status> searchTwitter(String search, int size) {
-		Twitter twitter = TwitterFactory.getSingleton();
-		
+	public static ArrayList<Status> searchTwitter(String search, int size) {		
 		Query query = new Query(search);
 		query.setCount(size);
 		
@@ -44,5 +45,19 @@ public class TwitterAPI {
 		}
 		
 		return results;
+	}
+	
+	/**Filters through a list of Tweets and returns the most popular.*/
+	public static Status mostPopular(ArrayList<Status> tweets) {
+		Status mostPopular = null;
+		int mostFavorited = 0;
+		for (Status tweet : tweets)
+			if (tweet.getFavoriteCount() > mostFavorited)
+			{
+				mostFavorited = tweet.getFavoriteCount();
+				mostPopular = tweet;
+			}
+		
+		return mostPopular;
 	}
 }
