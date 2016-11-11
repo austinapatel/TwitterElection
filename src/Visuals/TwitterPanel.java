@@ -3,18 +3,23 @@ package Visuals;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import twitter4j.Status;
 
-public class TwitterPanel extends JPanel {
+public class TwitterPanel extends JPanel implements ActionListener {
 	public TwitterPanel(ArrayList<Status> status) {
 		this.setVisible(true);
 		this.setSize(Display.F_WIDTH / 2, Display.F_HEIGHT);
 		this.setBackground(Color.YELLOW);
+		 Timer timer = new Timer(20, this);
+		 timer.start();
 	}
 
 	public static void main(String[] args) {
@@ -46,5 +51,12 @@ public class TwitterPanel extends JPanel {
 		// Draw a filled-in magenta circle
 		g.setColor(Color.MAGENTA);
 		g.fillOval(200, 180, 100, 100);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println("test");
+		
+		
 	}
 }
