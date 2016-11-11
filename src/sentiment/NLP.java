@@ -17,10 +17,12 @@ public class NLP {
 	}
 
 	
-//	NLP.init();
-//    for(String tweet : tweets) {
-//        System.out.println(tweet + " : " + NLP.findSentiment(tweet));
-	
+	public static void main(String[] args)
+	{
+		NLP.init();
+	    
+	      System.out.println("the cat walked" + " : " + NLP.findSentiment("the cat walked"));
+	}
 	
 	public static int findSentiment(String tweet) {
 
