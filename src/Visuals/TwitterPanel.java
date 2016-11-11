@@ -21,7 +21,7 @@ public class TwitterPanel extends JPanel implements ActionListener {
 	public TwitterPanel(ArrayList<Status> status) {
 		this.setVisible(true);
 		this.setSize(Display.F_WIDTH / 2, Display.F_HEIGHT);
-		this.setBackground(Color.BLUE);
+		this.setBackground(Color.CYAN);
 		this.status = status;
 		timer = new Timer(3000, this);
 		timer.start();
