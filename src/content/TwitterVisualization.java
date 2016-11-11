@@ -26,7 +26,7 @@ public class TwitterVisualization {
 
 		// System.out.println(TwitterVisualization.getStateTweets().get("California").getText());
 		// System.out.println("Test");
-		System.out.println(getStateColorsNew("trump"));
+		System.out.println(getStateColorsNew("love"));
 	}
 
 	/** Returns the Tweets to be for each state. */
@@ -110,7 +110,7 @@ public class TwitterVisualization {
 
 		for (String state : states)
 		{
-			ArrayList<Status> tweets = TwitterAPI.searchTwitter(state + " " + query, 50);
+			ArrayList<Status> tweets = TwitterAPI.searchTwitter(state + " " + query, 10);
 			
 			for (Status tweet : tweets)
 				if (tweet.getText().contains(state) || tweet.getUser().getLocation().contains(state)) {
@@ -134,10 +134,10 @@ public class TwitterVisualization {
 				}
 		}
 
-		System.out.println("Negative: " + negativeResults);
-		System.out.println("Positive: " + positiveResults);
-		System.out.println("Neutral: " + neutralResults);
-		System.out.println("Net: " + netResults);
+//		System.out.println("Negative: " + negativeResults);
+//		System.out.println("Positive: " + positiveResults);
+//		System.out.println("Neutral: " + neutralResults);
+//		System.out.println("Net: " + netResults);
 		// System.out.println(total);
 
 		return netResults;
