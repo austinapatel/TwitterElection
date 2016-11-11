@@ -9,6 +9,5 @@ public class Main {
 	{
 		TwitterAPI.init();
 		Display map = new Display(TwitterVisualization.getStateColors("trump"), TwitterVisualization.getLastTweets());
-//		new Display(null, null);
 	}
 }

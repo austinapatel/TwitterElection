@@ -20,7 +20,7 @@ public class Display extends JFrame {
 		this.setSize(F_WIDTH, F_HEIGHT);
 		this.setResizable(false);
 		//JPanel stuff
-		MapPanel mapPanel = new MapPanel();
+		MapPanel mapPanel = new MapPanel(data);
 		mapPanel.setSize(F_WIDTH / 2, F_HEIGHT);
 		mapPanel.setLayout(new BorderLayout());
 		this.setLayout(null);
