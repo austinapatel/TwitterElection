@@ -22,7 +22,7 @@ public class Display extends JFrame implements WindowListener {
 	public Display (HashMap<String, Integer> data, ArrayList<Status> tweets) {
 		//Frame Size
 		this.setSize(F_WIDTH, F_HEIGHT);
-//		this.setResizable(false);
+		this.setResizable(false);
 		//JPanel stuff
 		MapPanel mapPanel = new MapPanel(data);
 		mapPanel.setSize((int) (F_WIDTH * .75), F_HEIGHT);
@@ -32,15 +32,15 @@ public class Display extends JFrame implements WindowListener {
 		this.addWindowListener(this);
 		
 		twitterPanel = new TwitterPanel(tweets);
-//		twitterPanel.setSize(100, 100);
+		twitterPanel.setSize(100, 100);
 //		twitterPanel.setLayout(new BorderLayout());
 		
 		
 //		TwitterPanel.add(bottomLabel, BorderLayout.PAGE_END);
 		twitterPanel.setLocation((int) (F_WIDTH * .75), 0);
-		this.add(mapPanel);
+		this.add(mapPanel); 
 		this.add(twitterPanel);
-
+		//this.pack();
 		//Make it visible
 		this.setVisible(true);
 	}

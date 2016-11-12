@@ -24,13 +24,13 @@ public class TwitterPanel extends JPanel implements ActionListener {
 	
 	public TwitterPanel(ArrayList<Status> status) {
 		this.setVisible(true);
-		this.setSize((int) (Display.F_WIDTH * .75), Display.F_HEIGHT);
+		this.setSize((int) (Display.F_WIDTH * .25), Display.F_HEIGHT);
 		this.setBackground(Color.CYAN);
 		this.status = status;
 		timer = new Timer(3000, this);
 		timer.start();
 		textAreal = new JTextArea("", 5, 10);
-	    textAreal.setPreferredSize(new Dimension(100, 100));
+	    textAreal.setPreferredSize(new Dimension((int) (Display.F_WIDTH * .25), Display.F_HEIGHT));
 	    textAreal.setLineWrap(true);
 	    textAreal.setVisible(true);
 	    this.add(textAreal);
@@ -57,7 +57,8 @@ public class TwitterPanel extends JPanel implements ActionListener {
 		String text = "";
 		for (int i = 0; i < num; i++)
 		{
-			text += status.get(num).getText();
+			if (i < status.size())
+				text += status.get(num).getText();
 		}
 		textAreal.setText(text);
 	}

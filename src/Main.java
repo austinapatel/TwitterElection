@@ -7,7 +7,7 @@ public class Main {
 	public static void main (String[] args)
 	{
 		TwitterAPI.init();
-		Display map = new Display(TwitterVisualization.getStateColors("trump"), TwitterVisualization.getLastTweets());
+		Display map = new Display(TwitterVisualization.getStateColors("icecream"), TwitterVisualization.getLastTweets());
 //		new Display(null, null);
 	}
 }

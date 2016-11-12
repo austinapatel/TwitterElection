@@ -23,13 +23,13 @@ public class TwitterVisualization {
 	
 	private static ArrayList<Status> lastTweets;
 
-	public static void main(String[] args) {
-		TwitterAPI.init();
-
-		// System.out.println(TwitterVisualization.getStateTweets().get("California").getText());
-		// System.out.println("Test");
-		System.out.println(getStateColors("trump"));
-	}
+//	public static void main(String[] args) {
+//		TwitterAPI.init();
+//
+//		// System.out.println(TwitterVisualization.getStateTweets().get("California").getText());
+//		// System.out.println("Test");
+//		System.out.println(getStateColors("trump"));
+//	}
 	
 	public static ArrayList<Status> getLastTweets() {
 		return lastTweets;
