@@ -52,7 +52,7 @@ public class MapPanel extends JPanel {
 	    for (String state : TwitterVisualization.states)
 	    	g.drawImage(states.get(state).getScaledInstance((int) (Display.F_WIDTH * .75), -1, states.get(state).SCALE_SMOOTH), 0, 0, this);
 	    
-	    g.drawImage(borders, 0, 0, this);
+	    g.drawImage(borders.getScaledInstance((int) (Display.F_WIDTH * .75), -1, borders.SCALE_SMOOTH), 0, 0, this);
 	}
 	
 	//Change Color
