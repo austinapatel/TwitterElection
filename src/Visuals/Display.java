@@ -22,7 +22,7 @@ public class Display extends JFrame implements WindowListener {
 	public Display (HashMap<String, Integer> data, ArrayList<Status> tweets) {
 		//Frame Size
 		this.setSize(F_WIDTH, F_HEIGHT);
-		this.setResizable(false);
+//		this.setResizable(false);
 		//JPanel stuff
 		MapPanel mapPanel = new MapPanel(data);
 		mapPanel.setSize((int) (F_WIDTH * .75), F_HEIGHT);

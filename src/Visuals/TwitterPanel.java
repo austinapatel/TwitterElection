@@ -30,7 +30,8 @@ public class TwitterPanel extends JPanel implements ActionListener {
 		timer = new Timer(3000, this);
 		timer.start();
 		textAreal = new JTextArea("", 5, 10);
-	    textAreal.setPreferredSize(new Dimension(100, 100));
+		textAreal.setSize((int) (Display.F_WIDTH - Display.F_WIDTH * .75), Display.F_HEIGHT);
+	    textAreal.setPreferredSize(new Dimension((int) (Display.F_WIDTH - Display.F_WIDTH * .75), Display.F_HEIGHT));
 	    textAreal.setLineWrap(true);
 	    textAreal.setVisible(true);
 	    this.add(textAreal);

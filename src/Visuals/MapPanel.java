@@ -60,9 +60,11 @@ public class MapPanel extends JPanel {
 				states.replace(diffStates, tint(states.get(diffStates), false));
 		}
 		
-		ArrayList<Integer> values1 = (ArrayList<Integer>) data.values();
-		ArrayList<String> l = new ArrayList<String>(data.keySet());
+		ArrayList<Integer> values1 = new ArrayList<Integer>();
 		
+		for (String state : TwitterVisualization.states)
+			values1.add(data.get(state));
+				
 		int[] values2 = new int[values1.size()];
 		
 		for (int i = 0; i < values1.size(); i++)
