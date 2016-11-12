@@ -35,9 +35,7 @@ public class Display extends JFrame implements WindowListener {
 //		twitterPanel.setSize(100, 100);
 //		twitterPanel.setLayout(new BorderLayout());
 		
-		JLabel bottomLabel = new JLabel("Bottom header!");
-		bottomLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		mapPanel.add(bottomLabel, BorderLayout.PAGE_END);
+		
 //		TwitterPanel.add(bottomLabel, BorderLayout.PAGE_END);
 		twitterPanel.setLocation((int) (F_WIDTH * .75), 0);
 		this.add(mapPanel);
