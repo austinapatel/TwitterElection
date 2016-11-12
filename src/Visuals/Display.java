@@ -1,20 +1,21 @@
 package Visuals;
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 
 import twitter4j.Status;
 
 @SuppressWarnings("serial")
 public class Display extends JFrame implements WindowListener {
-	public final static int F_HEIGHT = 700;
-	public final static int F_WIDTH = 1300;
+	public static int F_HEIGHT = 700;
+	public static int F_WIDTH = 1300;
 	
 	private TwitterPanel twitterPanel;
 	
@@ -22,7 +23,7 @@ public class Display extends JFrame implements WindowListener {
 	public Display (HashMap<String, Integer> data, ArrayList<Status> tweets) {
 		//Frame Size
 		this.setSize(F_WIDTH, F_HEIGHT);
-		this.setResizable(false);
+		this.setResizable(true);
 		//JPanel stuff
 		MapPanel mapPanel = new MapPanel(data);
 		mapPanel.setSize((int) (F_WIDTH * .75), F_HEIGHT);
@@ -43,6 +44,18 @@ public class Display extends JFrame implements WindowListener {
 		//this.pack();
 		//Make it visible
 		this.setVisible(true);
+		
+		this.getRootPane().addComponentListener(new ComponentAdapter() {
+            public void componentResized(ComponentEvent e) {
+                // This is only called when the user releases the mouse button.
+                resetSize();
+            }
+        });
+	}
+	
+	private void resetSize() {
+		F_HEIGHT = this.getHeight();
+		F_WIDTH = this.getWidth();
 	}
 
 	@Override
