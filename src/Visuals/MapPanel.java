@@ -17,12 +17,14 @@ public class MapPanel extends JPanel {
 	
 	private HashMap<String, BufferedImage> states;
 	private HashMap<String, Integer> data;
+	BufferedImage borders = null;
 	
 	public MapPanel(HashMap<String, Integer> data2) {
 		states = new HashMap<String, BufferedImage>();
 		data = data2;
 		
 		try {
+			borders = ImageIO.read(new File("Images/white-states.png"));
 			for (String state : TwitterVisualization.states) {
 				states.put(state, ImageIO.read(new File("Images/" + state + ".png")));
 			}
@@ -49,6 +51,8 @@ public class MapPanel extends JPanel {
 	    
 	    for (String state : TwitterVisualization.states)
 	    	g.drawImage(states.get(state).getScaledInstance((int) (Display.F_WIDTH * .75), -1, states.get(state).SCALE_SMOOTH), 0, 0, this);
+	    
+	    g.drawImage(borders, 0, 0, this);
 	}
 	
 	//Change Color
