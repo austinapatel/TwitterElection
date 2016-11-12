@@ -41,7 +41,7 @@ public class MapPanel extends JPanel {
 		}
 
 		bottomLabel = new JLabel("Bottom header!");
-		bottomLabel.setLocation(0, 0);
+		bottomLabel.setLocation(100, 0);
 //		bottomLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		this.add(bottomLabel);
 	}
@@ -81,7 +81,7 @@ public class MapPanel extends JPanel {
 		bottomLabel.setText(newText);
 
 		for (String state : TwitterVisualization.states)
-			g.drawImage(states.get(state).getScaledInstance((int) (Display.F_WIDTH * .75), -1,
+			g.drawImage(states.get(state).getScaledInstance((int) (Display.F_WIDTH), -1,
 					states.get(state).SCALE_SMOOTH), 0, 0, this);
 
 		//Paint it all
@@ -95,9 +95,9 @@ public class MapPanel extends JPanel {
 	    }
 	    
 	    for (String state : TwitterVisualization.states)
-	    	g.drawImage(states.get(state).getScaledInstance((int) (Display.F_WIDTH * .75), -1, states.get(state).SCALE_SMOOTH), 0, 0, this);
+	    	g.drawImage(states.get(state).getScaledInstance((int) (Display.F_WIDTH), -1, states.get(state).SCALE_SMOOTH), 0, 0, this);
 	    
-	    g.drawImage(borders.getScaledInstance((int) (Display.F_WIDTH * .75), -1, borders.SCALE_SMOOTH), 0, 0, this);
+	    g.drawImage(borders.getScaledInstance((int) (Display.F_WIDTH), -1, borders.SCALE_SMOOTH), 0, 0, this);
 	}
 	
 	public static <T, E> T getKeyByValue(Map<T, E> map, E value) {

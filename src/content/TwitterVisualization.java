@@ -105,6 +105,17 @@ public class TwitterVisualization {
 		HashMap<String, Integer> sentiment = new HashMap<String, Integer>();
 		HashMap<String, Integer> mentions = new HashMap<String, Integer>();
 		HashMap<String, Integer> results = new HashMap<String, Integer>();
+		
+		HashMap<String, Integer> netResults = new HashMap<String, Integer>(),
+				positiveResults = new HashMap<String, Integer>(), negativeResults = new HashMap<String, Integer>(),
+				neutralResults = new HashMap<String, Integer>();
+
+		for (String state : states) {
+			netResults.put(state, 0);
+			positiveResults.put(state, 0);
+			negativeResults.put(state, 0);
+			neutralResults.put(state, 0);
+		}
 
 		for (String state : states) {
 			sentiment.put(state, 0);
@@ -114,7 +125,7 @@ public class TwitterVisualization {
 
 		for (String state : states)
 		{
-			ArrayList<Status> tweets = TwitterAPI.searchTwitter(state + " " + query, 1);
+			ArrayList<Status> tweets = TwitterAPI.searchTwitter(state + " " + query, 10);
 			
 			for (Status tweet : tweets)
 				if (tweet.getText().contains(state) || tweet.getUser().getLocation().contains(state)) {
@@ -122,18 +133,37 @@ public class TwitterVisualization {
 					int result = NLP.findSentiment(tweet.getText());
 					int change = 0;
 	
-					if (result == 3)
-						change = 1;
-					else if (result == 2)
-						change = 0;
-					else if (result == 1)
-						change = -1;
+//					if (result == 3)
+//						change = 1;
+//					else if (result == 2)
+//						change = 0;
+//					else if (result == 1)
+//						change = -1;
 					
+					
+					if (result == 3) {
+						change = 1;
+						positiveResults.put(state, positiveResults.get(state) + 1);
+					} else if (result == 2) {
+						change = 0;
+						neutralResults.put(state, neutralResults.get(state) + 1);
+					} else if (result == 1) {
+						change = -1;
+						negativeResults.put(state, negativeResults.get(state) + 1);
+					}
+					
+					netResults.put(state, netResults.get(state) + change);
+				
 					lastTweets.add(tweet);
 		
 					sentiment.put(state, sentiment.get(state) + change);
 				}
 		}
+		
+		System.out.println("Negative: " + negativeResults);
+		System.out.println("Positive: " + positiveResults);
+		System.out.println("Neutral: " + neutralResults);
+		System.out.println("Net: " + netResults);
 		
 		for (String state : states)
 			results.put(state, (sentiment.get(state) < 0) ? -mentions.get(state) : mentions.get(state));

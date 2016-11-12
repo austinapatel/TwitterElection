@@ -14,31 +14,34 @@ import twitter4j.Status;
 
 @SuppressWarnings("serial")
 public class Display extends JFrame implements WindowListener {
-	public static int F_HEIGHT = 700;
+	public static int F_HEIGHT = 1000;
 	public static int F_WIDTH = 1300;
+	
+	public static double mapSize = 0.75, textSize = 1 - mapSize;
 	
 	private TwitterPanel twitterPanel;
 	
 	//Constructor
-	public Display (HashMap<String, Integer> data, ArrayList<Status> tweets) {
+	public Display (HashMap<String, Integer> data, ArrayList<Status> tweets) {		
 		//Frame Size
 		this.setSize(F_WIDTH, F_HEIGHT);
 		this.setResizable(true);
 		//JPanel stuff
 		MapPanel mapPanel = new MapPanel(data);
-		mapPanel.setSize((int) (F_WIDTH * .75), F_HEIGHT);
+		mapPanel.setSize(F_WIDTH, (int) (F_HEIGHT * mapSize));
 		mapPanel.setLayout(new BorderLayout());
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.addWindowListener(this);
 		
 		twitterPanel = new TwitterPanel(tweets);
-		twitterPanel.setSize(100, 100);
+		twitterPanel.setSize(F_WIDTH, (int) (F_HEIGHT * textSize));
+		
 //		twitterPanel.setLayout(new BorderLayout());
 		
 		
 //		TwitterPanel.add(bottomLabel, BorderLayout.PAGE_END);
-		twitterPanel.setLocation((int) (F_WIDTH * .75), 0);
+		twitterPanel.setLocation(0, (int) (F_HEIGHT * mapSize));
 		this.add(mapPanel); 
 		this.add(twitterPanel);
 		//this.pack();
