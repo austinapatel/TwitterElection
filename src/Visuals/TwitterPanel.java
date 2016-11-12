@@ -17,7 +17,7 @@ import twitter4j.Status;
 public class TwitterPanel extends JPanel implements ActionListener {
 	private ArrayList<Status> status;
 	private Timer timer;
-	private int num = 10;
+	private int num = 5;
 	
 	public TwitterPanel(ArrayList<Status> status) {
 		this.setVisible(true);
@@ -49,7 +49,7 @@ public class TwitterPanel extends JPanel implements ActionListener {
 		int y = 20;
 		
 		if (status != null)
-			for (int i = num - 10; i < num; i ++)
+			for (int i = num - 5; i < num; i ++)
 			{
 				g.drawString(status.get(i).getText(), 0, y);
 				y+=30;
@@ -58,10 +58,10 @@ public class TwitterPanel extends JPanel implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		num += 10;
+		num += 5;
 		if (num > status.size())
 		{
-			num = 10;
+			num = 5;
 		}
 		this.paintComponent(getGraphics());
 	}
