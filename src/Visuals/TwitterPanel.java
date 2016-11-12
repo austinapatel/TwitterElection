@@ -48,9 +48,9 @@ public class TwitterPanel extends JPanel implements ActionListener {
 		g.setFont(new Font("Arial", Font.BOLD, 16));
 		int y = 20;
 		
+		if (status != null)
 			for (int i = num - 10; i < num; i ++)
 			{
-				
 				g.drawString(status.get(i).getText(), 0, y);
 				y+=30;
 			}
