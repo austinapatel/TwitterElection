@@ -140,7 +140,6 @@ public class TwitterVisualization {
 //					else if (result == 1)
 //						change = -1;
 					
-					
 					if (result == 3) {
 						change = 1;
 						positiveResults.put(state, positiveResults.get(state) + 1);

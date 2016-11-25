@@ -15,10 +15,10 @@ import java.util.Objects;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import content.TwitterVisualization;
 
+@SuppressWarnings("serial")
 public class MapPanel extends JPanel {
 
 	private HashMap<String, BufferedImage> states;
@@ -82,7 +82,7 @@ public class MapPanel extends JPanel {
 
 		for (String state : TwitterVisualization.states)
 			g.drawImage(states.get(state).getScaledInstance((int) (Display.F_WIDTH), -1,
-					states.get(state).SCALE_SMOOTH), 0, 0, this);
+					BufferedImage.SCALE_SMOOTH), 0, 0, this);
 
 		//Paint it all
 	    super.paintComponent(g);
@@ -95,9 +95,9 @@ public class MapPanel extends JPanel {
 	    }
 	    
 	    for (String state : TwitterVisualization.states)
-	    	g.drawImage(states.get(state).getScaledInstance((int) (Display.F_WIDTH), -1, states.get(state).SCALE_SMOOTH), 0, 0, this);
+	    	g.drawImage(states.get(state).getScaledInstance((int) (Display.F_WIDTH), -1, BufferedImage.SCALE_SMOOTH), 0, 0, this);
 	    
-	    g.drawImage(borders.getScaledInstance((int) (Display.F_WIDTH), -1, borders.SCALE_SMOOTH), 0, 0, this);
+	    g.drawImage(borders.getScaledInstance((int) (Display.F_WIDTH), -1, BufferedImage.SCALE_SMOOTH), 0, 0, this);
 	}
 	
 	public static <T, E> T getKeyByValue(Map<T, E> map, E value) {
@@ -115,7 +115,6 @@ public class MapPanel extends JPanel {
 		for (int x = 0; x < img.getWidth(); x++) {
 			for (int y = 0; y < img.getHeight(); y++) {
 				if (!isTransparent(x, y, img)) {
-					Color color = new Color(img.getRGB(x, y));
 					Color rBrighter = Color.RED.brighter();
 					Color gBrighter = Color.GREEN.brighter();
 					if (rOrG)

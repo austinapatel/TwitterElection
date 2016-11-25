@@ -7,13 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import twitter4j.Status;
 
-
+@SuppressWarnings("serial")
 public class TwitterPanel extends JPanel implements ActionListener {
 	private ArrayList<Status> status;
 	private Timer timer;
