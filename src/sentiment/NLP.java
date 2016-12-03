@@ -19,7 +19,7 @@ public class NLP {
 	public static void main(String[] args)
 	{
 		NLP.init();
-		String search = "cats are bad";
+		String search = "the cowboys are playing tonight";
 	    System.out.println(search + " : " + NLP.findSentiment(search));
 	}
 	
