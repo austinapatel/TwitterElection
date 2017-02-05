@@ -1,7 +1,7 @@
 # TwitterElection
 A Java program utilizing the Twitter API to display tweets based on a query for each state in the United States.  Data is then displayed on a visual map based on the opinions present in the tweets.
 
-Make during the ANova Hacks Hackathon in Berkeley 2016.
+Got 3rd place during the ANova Hacks Hackathon in Berkeley 2016.
 
 To run program:
 1. Add "/lib/" folder in root directory.
